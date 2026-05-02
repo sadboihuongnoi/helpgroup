@@ -2,8 +2,8 @@ backend:
   name: github
   repo: sadboihuongnoi/helpgroup
   branch: main
-  base_url: https://gc.sveltia.app
-  auth_endpoint: auth
+  base_url: https://helpgroup.netlify.app
+  auth_endpoint: .netlify/functions/auth
 
 # Bật khi muốn duyệt nội dung trước khi xuất bản (Editorial Workflow)
 # publish_mode: editorial_workflow
