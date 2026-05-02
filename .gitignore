@@ -1,0 +1,9 @@
+public/
+resources/
+.hugo_build.lock
+node_modules/
+.DS_Store
+.netlify/
+*.log
+.env
+.env.local

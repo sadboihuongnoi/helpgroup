@@ -1,0 +1,93 @@
+# UI strings — Tiếng Việt
+
+[members_heading]
+other = "Thành viên"
+[members_subtitle]
+other = "Đội ngũ nghiên cứu & sinh viên của lab."
+[members_empty]
+other = "Chưa có thành viên nào. Hãy thêm tại"
+
+[publications_heading]
+other = "Bài báo"
+[publications_subtitle]
+other = "Các công trình đã công bố và sắp xuất bản."
+[publications_empty]
+other = "Chưa có bài báo nào."
+[publications_pdf]
+other = "PDF / DOI"
+[publications_code]
+other = "Code"
+
+[projects_heading]
+other = "Dự án"
+[projects_subtitle]
+other = "Những dự án nghiên cứu đang triển khai và đã hoàn thành."
+[projects_empty]
+other = "Chưa có dự án nào."
+[projects_more]
+other = "Xem thêm →"
+
+[news_heading]
+other = "Tin tức"
+[news_subtitle]
+other = "Hoạt động & sự kiện gần đây."
+[news_empty]
+other = "Chưa có tin tức nào."
+
+[ui_phone]
+other = "Điện thoại"
+[ui_address]
+other = "Địa chỉ"
+
+[link_email]
+other = "Email"
+[link_homepage]
+other = "Trang cá nhân"
+[link_scholar]
+other = "Scholar"
+[link_github]
+other = "GitHub"
+
+[filter_all]
+other = "Tất cả"
+[ui_view_all]
+other = "Xem tất cả →"
+[ui_view_details]
+other = "Xem chi tiết →"
+[ui_back_members]
+other = "← Quay lại trang Thành viên"
+[ui_back_publications]
+other = "← Quay lại trang Bài báo"
+[ui_back_projects]
+other = "← Quay lại trang Dự án"
+[ui_back_news]
+other = "← Quay lại trang Tin tức"
+[member_pubs_heading]
+other = "Bài báo"
+[member_projects_heading]
+other = "Dự án đang tham gia"
+
+[ui_authors]
+other = "Tác giả"
+[ui_venue]
+other = "Hội nghị / Tạp chí"
+[ui_year]
+other = "Năm"
+[ui_status]
+other = "Trạng thái"
+[ui_tags]
+other = "Tags"
+[ui_external_link]
+other = "Liên kết ngoài"
+
+[ui_open_menu]
+other = "Mở menu"
+[ui_main_nav]
+other = "Điều hướng chính"
+[ui_toggle_theme]
+other = "Đổi giao diện sáng/tối"
+[ui_back_home]
+other = "← Quay lại trang chủ"
+
+[footer_built_with]
+other = "Built with Hugo + Decap CMS."

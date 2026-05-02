@@ -1,0 +1,113 @@
+{{ define "main" }}
+{{ $slug := .File.ContentBaseName }}
+{{ $placeholder := "/images/uploads/pub-placeholder.svg" }}
+{{ $allPubs := where site.RegularPages "Section" "publications" }}
+{{ $memberPubs := where $allPubs "Params.members" "intersect" (slice $slug) }}
+{{ $allProjects := where site.RegularPages "Section" "projects" }}
+{{ $memberProjects := where $allProjects "Params.members" "intersect" (slice $slug) }}
+
+<article>
+  <section class="section">
+    <div class="container narrow">
+      <div class="member-profile">
+        <div class="member-profile-photo">
+          <img src="{{ .Params.photo | relURL }}" alt="{{ .Title }}" />
+        </div>
+        <div class="member-profile-info">
+          <h1>{{ .Title }}</h1>
+          <p class="member-role">{{ .Params.role }}</p>
+          <ul class="member-links">
+            {{ with .Params.email }}<li><a href="mailto:{{ . }}">{{ i18n "link_email" }}</a></li>{{ end }}
+            {{ with .Params.homepage }}<li><a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_homepage" }}</a></li>{{ end }}
+            {{ with .Params.scholar }}<li><a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_scholar" }}</a></li>{{ end }}
+            {{ with .Params.github }}<li><a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_github" }}</a></li>{{ end }}
+          </ul>
+        </div>
+      </div>
+
+      {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+    </div>
+  </section>
+
+  {{ if $memberProjects }}
+    <section class="section section-alt">
+      <div class="container">
+        <header class="section-head" style="text-align:left;">
+          <h2>{{ i18n "member_projects_heading" }}</h2>
+        </header>
+        <div class="grid grid-projects">
+          {{ range $memberProjects.ByWeight }}
+            <article class="project-card">
+              <a class="project-image" href="{{ .RelPermalink }}">
+                <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" loading="lazy" />
+                {{ with .Params.status }}<span class="badge">{{ . }}</span>{{ end }}
+              </a>
+              <div class="project-body">
+                <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                <p>{{ .Params.description }}</p>
+                {{ with .Params.tags }}
+                  <ul class="tag-list">
+                    {{ range . }}<li>#{{ . }}</li>{{ end }}
+                  </ul>
+                {{ end }}
+              </div>
+            </article>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+  {{ end }}
+
+  {{ if $memberPubs }}
+    <section class="section">
+      <div class="container">
+        <header class="section-head" style="text-align:left;">
+          <h2>{{ i18n "member_pubs_heading" }} <span class="muted" style="font-weight:400; font-size:.85em;">({{ len $memberPubs }})</span></h2>
+        </header>
+
+        {{ $years := slice }}
+        {{ range $memberPubs }}
+          {{ $years = $years | append .Params.year }}
+        {{ end }}
+        {{ $years = uniq $years | sort | collections.Reverse }}
+
+        {{ range $year := $years }}
+          <div class="pub-year-group">
+            <h3 class="pub-year">{{ $year }}</h3>
+            <ol class="pub-list">
+              {{ range where $memberPubs "Params.year" $year }}
+                <li class="pub-item {{ if .Params.featured }}is-featured{{ end }}">
+                  <a class="pub-thumb" href="{{ .RelPermalink }}">
+                    <img src="{{ (.Params.image | default $placeholder) | relURL }}" alt="{{ .Title }}" loading="lazy" />
+                  </a>
+                  <div class="pub-content">
+                    <p class="pub-title">
+                      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </p>
+                    <p class="pub-meta">
+                      <span class="pub-authors">{{ .Params.authors }}</span>
+                      {{ with .Params.venue }}<span class="pub-venue">· {{ . }}</span>{{ end }}
+                      {{ with .Params.type }}<span class="pub-type">· {{ . }}</span>{{ end }}
+                    </p>
+                    <p class="pub-actions">
+                      <a href="{{ .RelPermalink }}">{{ i18n "ui_view_details" }}</a>
+                      {{ with .Params.link }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_pdf" }}</a>{{ end }}
+                      {{ with .Params.code }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_code" }}</a>{{ end }}
+                    </p>
+                  </div>
+                </li>
+              {{ end }}
+            </ol>
+          </div>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+
+  <section class="section">
+    <div class="container narrow">
+      <p><a class="link-arrow" href="{{ "members/" | relLangURL }}">{{ i18n "ui_back_members" }}</a></p>
+    </div>
+  </section>
+</article>
+{{ end }}

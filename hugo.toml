@@ -1,0 +1,82 @@
+baseURL = "https://helpgroup.netlify.app/"
+defaultContentLanguage = "vi"
+defaultContentLanguageInSubdir = false
+title = "Research Lab"
+enableRobotsTXT = true
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[taxonomies]
+  tag = "tags"
+
+# ========== LANGUAGES ==========
+[languages]
+
+  [languages.vi]
+    languageCode = "vi"
+    languageName = "Tiếng Việt"
+    title = "Research Lab"
+    weight = 1
+    [languages.vi.params]
+      description = "Trang web giới thiệu nhóm nghiên cứu"
+    [[languages.vi.menus.main]]
+      name = "Trang chủ"
+      url = "/#hero"
+      weight = 1
+    [[languages.vi.menus.main]]
+      name = "Thành viên"
+      url = "/#members"
+      weight = 2
+    [[languages.vi.menus.main]]
+      name = "Bài báo"
+      url = "/#publications"
+      weight = 3
+    [[languages.vi.menus.main]]
+      name = "Dự án"
+      url = "/#projects"
+      weight = 4
+    [[languages.vi.menus.main]]
+      name = "Tin tức"
+      url = "/#news"
+      weight = 5
+    [[languages.vi.menus.main]]
+      name = "Liên hệ"
+      url = "/#contact"
+      weight = 6
+
+  [languages.en]
+    languageCode = "en"
+    languageName = "English"
+    title = "Research Lab"
+    weight = 2
+    [languages.en.params]
+      description = "Research lab website"
+    [[languages.en.menus.main]]
+      name = "Home"
+      url = "/en/#hero"
+      weight = 1
+    [[languages.en.menus.main]]
+      name = "Members"
+      url = "/en/#members"
+      weight = 2
+    [[languages.en.menus.main]]
+      name = "Publications"
+      url = "/en/#publications"
+      weight = 3
+    [[languages.en.menus.main]]
+      name = "Projects"
+      url = "/en/#projects"
+      weight = 4
+    [[languages.en.menus.main]]
+      name = "News"
+      url = "/en/#news"
+      weight = 5
+    [[languages.en.menus.main]]
+      name = "Contact"
+      url = "/en/#contact"
+      weight = 6

@@ -1,0 +1,32 @@
+{{ define "main" }}
+<article class="section">
+  <div class="container narrow">
+    {{ with .Params.image }}
+      <div class="project-detail-cover">
+        <img src="{{ . | relURL }}" alt="{{ $.Title }}" />
+        {{ with $.Params.status }}<span class="badge">{{ . }}</span>{{ end }}
+      </div>
+    {{ end }}
+
+    <header class="section-head" style="text-align:left;">
+      <h1>{{ .Title }}</h1>
+      <p class="muted">{{ .Params.description }}</p>
+    </header>
+
+    <ul class="meta-list">
+      {{ with .Params.status }}<li><strong>{{ i18n "ui_status" }}:</strong> {{ . }}</li>{{ end }}
+      {{ if not .Date.IsZero }}<li><strong>{{ i18n "ui_year" }}:</strong> {{ .Date.Format "2006" }}</li>{{ end }}
+      {{ with .Params.tags }}
+        <li><strong>{{ i18n "ui_tags" }}:</strong>
+          {{ range $i, $t := . }}{{ if $i }}, {{ end }}#{{ $t }}{{ end }}
+        </li>
+      {{ end }}
+      {{ with .Params.link }}<li><strong>{{ i18n "ui_external_link" }}:</strong> <a href="{{ . }}" target="_blank" rel="noopener">{{ . }}</a></li>{{ end }}
+    </ul>
+
+    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+    <p><a class="link-arrow" href="{{ "projects/" | relLangURL }}">{{ i18n "ui_back_projects" }}</a></p>
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,13 @@
+heading: "Contact"
+intro: "We always welcome research collaborations and passionate students. Drop us an email."
+email: "lab@example.edu.vn"
+phone: "+84 24 1234 5678"
+address: "Room 101, Building A, XYZ University, Hanoi, Vietnam"
+map_embed: ""
+social:
+  - name: "GitHub"
+    url: "https://github.com/example-lab"
+    icon: ""
+  - name: "Facebook"
+    url: "https://facebook.com/example-lab"
+    icon: ""

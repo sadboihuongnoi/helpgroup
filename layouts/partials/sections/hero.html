@@ -1,0 +1,14 @@
+{{ $lang := .Site.Language.Lang }}
+{{ $hero := index .Site.Data $lang "hero" }}
+{{ with $hero }}
+  <section class="hero" id="hero" {{ with .background }}style="background-image: linear-gradient(rgba(15,23,42,.65), rgba(15,23,42,.85)), url('{{ . | relURL }}')"{{ end }}>
+    <div class="container hero-inner">
+      <p class="hero-eyebrow">{{ .subtitle }}</p>
+      <h1 class="hero-title">{{ .title }}</h1>
+      <p class="hero-desc">{{ .description }}</p>
+      {{ with .cta_label }}
+        <a class="btn btn-primary" href="{{ $hero.cta_link | default "#projects" }}">{{ . }}</a>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}

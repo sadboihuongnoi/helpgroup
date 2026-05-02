@@ -1,0 +1,13 @@
+heading: "Liên hệ"
+intro: "Chúng tôi luôn chào đón hợp tác nghiên cứu và sinh viên có đam mê. Hãy gửi email cho chúng tôi."
+email: "lab@example.edu.vn"
+phone: "+84 24 1234 5678"
+address: "Phòng 101, Tòa nhà A, Đại học XYZ, Hà Nội, Việt Nam"
+map_embed: ""
+social:
+  - name: "GitHub"
+    url: "https://github.com/example-lab"
+    icon: ""
+  - name: "Facebook"
+    url: "https://facebook.com/example-lab"
+    icon: ""

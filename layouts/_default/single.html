@@ -1,0 +1,22 @@
+{{ define "main" }}
+<article class="section">
+  <div class="container narrow">
+    <header class="section-head">
+      <h1>{{ .Title }}</h1>
+      {{ if not .Date.IsZero }}
+        <p class="muted"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time></p>
+      {{ end }}
+    </header>
+
+    {{ with .Params.image }}
+      <p><img src="{{ . | relURL }}" alt="{{ $.Title }}" /></p>
+    {{ end }}
+
+    <div class="prose">
+      {{ .Content }}
+    </div>
+
+    <p><a class="link-arrow" href="{{ "" | relLangURL }}">{{ i18n "ui_back_home" }}</a></p>
+  </div>
+</article>
+{{ end }}

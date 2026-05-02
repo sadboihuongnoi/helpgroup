@@ -1,0 +1,43 @@
+{{ define "main" }}
+{{ $projects := (where .Site.RegularPages "Section" "projects").ByWeight }}
+
+<section class="section">
+  <div class="container">
+    <header class="section-head">
+      <h1>{{ .Title }}</h1>
+      <p class="muted">{{ i18n "projects_subtitle" }}</p>
+    </header>
+
+    {{ with .Content }}<div class="prose container narrow">{{ . }}</div>{{ end }}
+
+    {{ if $projects }}
+      <div class="grid grid-projects">
+        {{ range $projects }}
+          <article class="project-card">
+            <a class="project-image" href="{{ .RelPermalink }}">
+              <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" loading="lazy" />
+              {{ with .Params.status }}<span class="badge">{{ . }}</span>{{ end }}
+            </a>
+            <div class="project-body">
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <p>{{ .Params.description }}</p>
+              {{ with .Params.tags }}
+                <ul class="tag-list">
+                  {{ range . }}<li>#{{ . }}</li>{{ end }}
+                </ul>
+              {{ end }}
+              <a class="link-arrow" href="{{ .RelPermalink }}">{{ i18n "ui_view_details" }}</a>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="muted">{{ i18n "projects_empty" }}</p>
+    {{ end }}
+
+    <p class="section-cta">
+      <a class="link-arrow" href="{{ "" | relLangURL }}">{{ i18n "ui_back_home" }}</a>
+    </p>
+  </div>
+</section>
+{{ end }}

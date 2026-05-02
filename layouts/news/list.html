@@ -1,0 +1,43 @@
+{{ define "main" }}
+{{ $news := (where .Site.RegularPages "Section" "news").ByDate.Reverse }}
+
+<section class="section">
+  <div class="container">
+    <header class="section-head">
+      <h1>{{ .Title }}</h1>
+      <p class="muted">{{ i18n "news_subtitle" }}</p>
+    </header>
+
+    {{ if $news }}
+      <div class="grid grid-news">
+        {{ range $news }}
+          <article class="news-card">
+            {{ with .Params.image }}
+              <a class="news-image" href="{{ if $.Params.link }}{{ $.Params.link }}{{ else }}{{ $.RelPermalink }}{{ end }}"{{ if $.Params.link }} target="_blank" rel="noopener"{{ end }}>
+                <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy" />
+              </a>
+            {{ end }}
+            <div class="news-body">
+              <time class="news-date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02 Jan 2006" }}</time>
+              <h3>
+                {{ if .Params.link }}
+                  <a href="{{ .Params.link }}" target="_blank" rel="noopener">{{ .Title }}</a>
+                {{ else }}
+                  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                {{ end }}
+              </h3>
+              {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="muted">{{ i18n "news_empty" }}</p>
+    {{ end }}
+
+    <p class="section-cta">
+      <a class="link-arrow" href="{{ "" | relLangURL }}">{{ i18n "ui_back_home" }}</a>
+    </p>
+  </div>
+</section>
+{{ end }}

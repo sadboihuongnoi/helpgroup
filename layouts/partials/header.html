@@ -1,0 +1,43 @@
+<header class="site-header" id="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ "" | relLangURL }}">
+      <span class="brand-mark">⬢</span>
+      <span class="brand-name">{{ .Site.Title }}</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="{{ i18n "ui_open_menu" }}" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" aria-label="{{ i18n "ui_main_nav" }}">
+      <ul>
+        {{ range .Site.Menus.main }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ end }}
+      </ul>
+    </nav>
+
+    <div class="lang-switcher" aria-label="Language">
+      {{ $current := . }}
+      {{ range .Sites }}
+        {{ $site := . }}
+        {{ $href := .Home.RelPermalink }}
+        {{ range $current.AllTranslations }}
+          {{ if eq .Language.Lang $site.Language.Lang }}
+            {{ $href = .RelPermalink }}
+          {{ end }}
+        {{ end }}
+        {{ if eq .Language.Lang $current.Site.Language.Lang }}
+          <span class="lang-active" aria-current="true">{{ .Language.Lang | upper }}</span>
+        {{ else }}
+          <a href="{{ $href }}" hreflang="{{ .Language.Lang }}">{{ .Language.Lang | upper }}</a>
+        {{ end }}
+      {{ end }}
+    </div>
+
+    <button class="theme-toggle" aria-label="{{ i18n "ui_toggle_theme" }}" type="button">
+      <span class="icon-moon" aria-hidden="true">🌙</span>
+      <span class="icon-sun" aria-hidden="true">☀️</span>
+    </button>
+  </div>
+</header>

@@ -1,0 +1,25 @@
+{{ define "main" }}
+<article class="section">
+  <div class="container narrow">
+    <header class="pub-detail-head">
+      {{ with .Params.type }}<p class="pub-type-badge">{{ . }}</p>{{ end }}
+      <h1>{{ .Title }}</h1>
+      <p class="pub-detail-meta">
+        <strong>{{ i18n "ui_authors" }}:</strong> {{ .Params.authors }}<br />
+        {{ with .Params.venue }}<strong>{{ i18n "ui_venue" }}:</strong> {{ . }}<br />{{ end }}
+        <strong>{{ i18n "ui_year" }}:</strong> {{ .Params.year }}
+      </p>
+      <p class="pub-detail-actions">
+        {{ with .Params.link }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_pdf" }}</a>{{ end }}
+        {{ with .Params.code }}<a class="btn" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_code" }}</a>{{ end }}
+      </p>
+    </header>
+
+    {{ with .Params.image }}<p><img src="{{ . | relURL }}" alt="{{ $.Title }}" /></p>{{ end }}
+
+    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+    <p><a class="link-arrow" href="{{ "publications/" | relLangURL }}">{{ i18n "ui_back_publications" }}</a></p>
+  </div>
+</article>
+{{ end }}

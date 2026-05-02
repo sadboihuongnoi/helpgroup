@@ -1,0 +1,15 @@
+{{ $lang := .Site.Language.Lang }}
+{{ $contact := index .Site.Data $lang "contact" }}
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>
+      <strong>{{ .Site.Title }}</strong>
+      {{ with $contact }}
+        {{ with .address }}<p class="muted">{{ . }}</p>{{ end }}
+      {{ end }}
+    </div>
+    <div class="muted">
+      © {{ now.Format "2006" }} {{ .Site.Title }}. {{ i18n "footer_built_with" }}
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,93 @@
+# UI strings — English
+
+[members_heading]
+other = "Members"
+[members_subtitle]
+other = "Our researchers and students."
+[members_empty]
+other = "No members yet. Add them at"
+
+[publications_heading]
+other = "Publications"
+[publications_subtitle]
+other = "Published and upcoming research papers."
+[publications_empty]
+other = "No publications yet."
+[publications_pdf]
+other = "PDF / DOI"
+[publications_code]
+other = "Code"
+
+[projects_heading]
+other = "Projects"
+[projects_subtitle]
+other = "Ongoing and completed research projects."
+[projects_empty]
+other = "No projects yet."
+[projects_more]
+other = "Learn more →"
+
+[news_heading]
+other = "News"
+[news_subtitle]
+other = "Recent activities & events."
+[news_empty]
+other = "No news yet."
+
+[ui_phone]
+other = "Phone"
+[ui_address]
+other = "Address"
+
+[link_email]
+other = "Email"
+[link_homepage]
+other = "Homepage"
+[link_scholar]
+other = "Scholar"
+[link_github]
+other = "GitHub"
+
+[filter_all]
+other = "All"
+[ui_view_all]
+other = "View all →"
+[ui_view_details]
+other = "View details →"
+[ui_back_members]
+other = "← Back to Members"
+[ui_back_publications]
+other = "← Back to Publications"
+[ui_back_projects]
+other = "← Back to Projects"
+[ui_back_news]
+other = "← Back to News"
+[member_pubs_heading]
+other = "Publications"
+[member_projects_heading]
+other = "Active projects"
+
+[ui_authors]
+other = "Authors"
+[ui_venue]
+other = "Venue"
+[ui_year]
+other = "Year"
+[ui_status]
+other = "Status"
+[ui_tags]
+other = "Tags"
+[ui_external_link]
+other = "External link"
+
+[ui_open_menu]
+other = "Open menu"
+[ui_main_nav]
+other = "Main navigation"
+[ui_toggle_theme]
+other = "Toggle light/dark theme"
+[ui_back_home]
+other = "← Back to home"
+
+[footer_built_with]
+other = "Built with Hugo + Decap CMS."

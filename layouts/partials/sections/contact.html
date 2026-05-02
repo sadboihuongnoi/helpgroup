@@ -1,0 +1,33 @@
+{{ $lang := .Site.Language.Lang }}
+{{ $contact := index .Site.Data $lang "contact" }}
+{{ with $contact }}
+<section class="section" id="contact">
+  <div class="container contact-grid">
+    <div>
+      <header class="section-head">
+        <h2>{{ .heading | default "Contact" }}</h2>
+        {{ with .intro }}<p class="muted">{{ . }}</p>{{ end }}
+      </header>
+      <ul class="contact-list">
+        {{ with .email }}<li><strong>Email:</strong> <a href="mailto:{{ . }}">{{ . }}</a></li>{{ end }}
+        {{ with .phone }}<li><strong>{{ i18n "ui_phone" | default "Phone" }}:</strong> {{ . }}</li>{{ end }}
+        {{ with .address }}<li><strong>{{ i18n "ui_address" | default "Address" }}:</strong> {{ . }}</li>{{ end }}
+      </ul>
+
+      {{ with .social }}
+        <ul class="social-list">
+          {{ range . }}
+            <li><a href="{{ .url }}" target="_blank" rel="noopener">{{ with .icon }}{{ . }} {{ end }}{{ .name }}</a></li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    </div>
+
+    {{ with .map_embed }}
+      <div class="contact-map">
+        <iframe src="{{ . }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

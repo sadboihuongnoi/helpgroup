@@ -1,0 +1,90 @@
+{{ define "main" }}
+{{ $pubs := where site.RegularPages "Section" "publications" }}
+{{ $placeholder := "/images/uploads/pub-placeholder.svg" }}
+
+<section class="section">
+  <div class="container">
+    <header class="section-head">
+      <h1>{{ .Title }}</h1>
+      <p class="muted">{{ i18n "publications_subtitle" }}</p>
+    </header>
+
+    {{ with .Content }}<div class="prose container narrow">{{ . }}</div>{{ end }}
+
+    {{ if $pubs }}
+      {{ $years := slice }}
+      {{ range $pubs }}
+        {{ $years = $years | append .Params.year }}
+      {{ end }}
+      {{ $years = uniq $years | sort | collections.Reverse }}
+
+      {{/* Filter buttons */}}
+      <div class="pub-filter" role="tablist">
+        <button class="filter-btn is-active" type="button" data-filter="all">{{ i18n "filter_all" | default "Tất cả" }}</button>
+        {{ range $year := $years }}
+          <button class="filter-btn" type="button" data-filter="{{ $year }}">{{ $year }}</button>
+        {{ end }}
+      </div>
+
+      <div class="pub-results">
+        {{ range $year := $years }}
+          <div class="pub-year-group" data-year="{{ $year }}">
+            <h2 class="pub-year">{{ $year }}</h2>
+            <ol class="pub-list">
+              {{ range where $pubs "Params.year" $year }}
+                <li class="pub-item {{ if .Params.featured }}is-featured{{ end }}">
+                  <a class="pub-thumb" href="{{ .RelPermalink }}">
+                    <img src="{{ (.Params.image | default $placeholder) | relURL }}" alt="{{ .Title }}" loading="lazy" />
+                  </a>
+                  <div class="pub-content">
+                    <p class="pub-title">
+                      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </p>
+                    <p class="pub-meta">
+                      <span class="pub-authors">{{ .Params.authors }}</span>
+                      {{ with .Params.venue }}<span class="pub-venue">· {{ . }}</span>{{ end }}
+                      {{ with .Params.type }}<span class="pub-type">· {{ . }}</span>{{ end }}
+                    </p>
+                    <p class="pub-actions">
+                      <a href="{{ .RelPermalink }}">{{ i18n "ui_view_details" }}</a>
+                      {{ with .Params.link }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_pdf" }}</a>{{ end }}
+                      {{ with .Params.code }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_code" }}</a>{{ end }}
+                    </p>
+                  </div>
+                </li>
+              {{ end }}
+            </ol>
+          </div>
+        {{ end }}
+      </div>
+    {{ else }}
+      <p class="muted">{{ i18n "publications_empty" }}</p>
+    {{ end }}
+
+    <p class="section-cta">
+      <a class="link-arrow" href="{{ "" | relLangURL }}">{{ i18n "ui_back_home" }}</a>
+    </p>
+  </div>
+</section>
+
+<script>
+  // Year filter — inline để tránh vấn đề cache JS
+  (function () {
+    var btns = document.querySelectorAll('.pub-filter .filter-btn');
+    var groups = document.querySelectorAll('.pub-year-group');
+    if (!btns.length || !groups.length) return;
+
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter');
+        btns.forEach(function (b) { b.classList.remove('is-active'); });
+        btn.classList.add('is-active');
+        groups.forEach(function (g) {
+          var match = (filter === 'all' || g.getAttribute('data-year') === filter);
+          g.classList.toggle('is-hidden', !match);
+        });
+      });
+    });
+  })();
+</script>
+{{ end }}

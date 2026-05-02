@@ -1,0 +1,38 @@
+{{ define "main" }}
+{{ $members := where (where .Site.RegularPages "Section" "members") "Params.draft" "!=" true }}
+{{ $members = $members.ByWeight }}
+
+<section class="section">
+  <div class="container">
+    <header class="section-head">
+      <h1>{{ .Title }}</h1>
+      <p class="muted">{{ i18n "members_subtitle" }}</p>
+    </header>
+
+    {{ with .Content }}<div class="prose container narrow">{{ . }}</div>{{ end }}
+
+    <div class="grid grid-cards">
+      {{ range $members }}
+        <article class="member-card">
+          <a class="member-photo" href="{{ .RelPermalink }}">
+            <img src="{{ .Params.photo | relURL }}" alt="{{ .Title }}" loading="lazy" />
+          </a>
+          <h3 class="member-name"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="member-role">{{ .Params.role }}</p>
+          {{ with .Summary }}<p class="member-bio">{{ . | plainify | truncate 120 }}</p>{{ end }}
+          <ul class="member-links">
+            {{ with .Params.email }}<li><a href="mailto:{{ . }}">{{ i18n "link_email" }}</a></li>{{ end }}
+            {{ with .Params.homepage }}<li><a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_homepage" }}</a></li>{{ end }}
+            {{ with .Params.scholar }}<li><a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_scholar" }}</a></li>{{ end }}
+            {{ with .Params.github }}<li><a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "link_github" }}</a></li>{{ end }}
+          </ul>
+        </article>
+      {{ end }}
+    </div>
+
+    <p class="section-cta">
+      <a class="link-arrow" href="{{ "" | relLangURL }}">{{ i18n "ui_back_home" }}</a>
+    </p>
+  </div>
+</section>
+{{ end }}

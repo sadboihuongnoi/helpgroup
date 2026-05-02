@@ -1,0 +1,44 @@
+{{ $news := (where .Site.RegularPages "Section" "news").ByDate.Reverse }}
+{{ $news = first 6 $news }}
+
+<section class="section section-alt" id="news">
+  <div class="container">
+    <header class="section-head">
+      <h2>{{ i18n "news_heading" }}</h2>
+      <p class="muted">{{ i18n "news_subtitle" }}</p>
+    </header>
+
+    {{ if $news }}
+      <div class="grid grid-news">
+        {{ range $news }}
+          <article class="news-card">
+            {{ with .Params.image }}
+              <div class="news-image">
+                <img src="{{ . | relURL }}" alt="{{ $.Title }}" loading="lazy" />
+              </div>
+            {{ end }}
+            <div class="news-body">
+              <time class="news-date" datetime="{{ .Date.Format "2006-01-02" }}">
+                {{ .Date.Format "02 Jan 2006" }}
+              </time>
+              <h3>
+                {{ if .Params.link }}
+                  <a href="{{ .Params.link }}" target="_blank" rel="noopener">{{ .Title }}</a>
+                {{ else }}
+                  <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                {{ end }}
+              </h3>
+              {{ with .Params.summary }}<p>{{ . }}</p>{{ end }}
+            </div>
+          </article>
+        {{ end }}
+      </div>
+
+      <p class="section-cta">
+        <a class="link-arrow" href="{{ "news/" | relLangURL }}">{{ i18n "ui_view_all" }}</a>
+      </p>
+    {{ else }}
+      <p class="muted">{{ i18n "news_empty" }}</p>
+    {{ end }}
+  </div>
+</section>

@@ -1,0 +1,39 @@
+{{ $projects := (where .Site.RegularPages "Section" "projects").ByWeight }}
+
+<section class="section" id="projects">
+  <div class="container">
+    <header class="section-head">
+      <h2>{{ i18n "projects_heading" }}</h2>
+      <p class="muted">{{ i18n "projects_subtitle" }}</p>
+    </header>
+
+    {{ if $projects }}
+      <div class="grid grid-projects">
+        {{ range $projects }}
+          <article class="project-card">
+            <a class="project-image" href="{{ .RelPermalink }}">
+              <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" loading="lazy" />
+              {{ with .Params.status }}<span class="badge">{{ . }}</span>{{ end }}
+            </a>
+            <div class="project-body">
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <p>{{ .Params.description }}</p>
+              {{ with .Params.tags }}
+                <ul class="tag-list">
+                  {{ range . }}<li>#{{ . }}</li>{{ end }}
+                </ul>
+              {{ end }}
+              <a class="link-arrow" href="{{ .RelPermalink }}">{{ i18n "ui_view_details" }}</a>
+            </div>
+          </article>
+        {{ end }}
+      </div>
+
+      <p class="section-cta">
+        <a class="link-arrow" href="{{ "projects/" | relLangURL }}">{{ i18n "ui_view_all" }}</a>
+      </p>
+    {{ else }}
+      <p class="muted">{{ i18n "projects_empty" }}</p>
+    {{ end }}
+  </div>
+</section>

@@ -1,0 +1,200 @@
+backend:
+  name: github
+  repo: sadboihuongnoi/helpgroup
+  branch: main
+
+# Bật khi muốn duyệt nội dung trước khi xuất bản (Editorial Workflow)
+# publish_mode: editorial_workflow
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+site_url: https://helpgroup.netlify.app
+display_url: https://helpgroup.netlify.app
+logo_url: https://helpgroup.netlify.app/images/logo.png
+
+locale: "vi"
+
+# ========== I18N (đa ngôn ngữ) ==========
+i18n:
+  structure: multiple_files       # mỗi locale là 1 file: slug.vi.md / slug.en.md
+  locales: [vi, en]
+  default_locale: vi
+
+collections:
+  # ---------- Cài đặt website (data files, mỗi ngôn ngữ 1 file) ----------
+  - name: "site"
+    label: "Cài đặt website / Site settings"
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "data/vi/hero.yml"
+        label: "Hero (VI)"
+        name: "hero_vi"
+        fields: &hero_fields
+          - { label: "Tên lab", name: "title", widget: "string" }
+          - { label: "Khẩu hiệu", name: "subtitle", widget: "string" }
+          - { label: "Mô tả ngắn", name: "description", widget: "text" }
+          - { label: "Ảnh nền", name: "background", widget: "image", required: false }
+          - { label: "Nút CTA - Nhãn", name: "cta_label", widget: "string", required: false }
+          - { label: "Nút CTA - Liên kết", name: "cta_link", widget: "string", required: false }
+
+      - file: "data/en/hero.yml"
+        label: "Hero (EN)"
+        name: "hero_en"
+        fields: *hero_fields
+
+      - file: "data/vi/stats.yml"
+        label: "Số liệu thống kê (VI)"
+        name: "stats_vi"
+        fields: &stats_fields
+          - { label: "Tiêu đề lớn", name: "heading", widget: "string" }
+          - { label: "Mô tả", name: "description", widget: "text" }
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - { label: "Tên hiển thị dưới logo", name: "logo_caption", widget: "string", required: false }
+          - label: "Các con số"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.value}} — {{fields.label}}"
+            fields:
+              - { label: "Giá trị", name: "value", widget: "string", hint: "VD: 2022, 80+, 100+" }
+              - { label: "Mô tả", name: "label", widget: "string" }
+
+      - file: "data/en/stats.yml"
+        label: "Stats (EN)"
+        name: "stats_en"
+        fields: *stats_fields
+
+      - file: "data/vi/contact.yml"
+        label: "Thông tin liên hệ (VI)"
+        name: "contact_vi"
+        fields: &contact_fields
+          - { label: "Tiêu đề mục", name: "heading", widget: "string" }
+          - { label: "Mô tả", name: "intro", widget: "text", required: false }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Điện thoại", name: "phone", widget: "string", required: false }
+          - { label: "Địa chỉ", name: "address", widget: "text", required: false }
+          - { label: "Bản đồ (URL nhúng)", name: "map_embed", widget: "string", required: false }
+          - label: "Mạng xã hội"
+            name: "social"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Tên", name: "name", widget: "string" }
+              - { label: "Liên kết", name: "url", widget: "string" }
+              - { label: "Icon", name: "icon", widget: "string", required: false }
+
+      - file: "data/en/contact.yml"
+        label: "Contact info (EN)"
+        name: "contact_en"
+        fields: *contact_fields
+
+  # ---------- Thành viên ----------
+  - name: "members"
+    label: "Thành viên / Members"
+    label_singular: "Thành viên"
+    folder: "content/members"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{role}}"
+    sortable_fields: ["weight", "title", "role"]
+    i18n: true
+    fields:
+      - { label: "Họ tên / Name", name: "title", widget: "string", i18n: true }
+      - { label: "Vai trò / Role", name: "role", widget: "string", i18n: true }
+      - { label: "Ảnh đại diện / Photo", name: "photo", widget: "image", i18n: duplicate }
+      - { label: "Email", name: "email", widget: "string", required: false, i18n: duplicate }
+      - { label: "Trang cá nhân / Homepage", name: "homepage", widget: "string", required: false, i18n: duplicate }
+      - { label: "Google Scholar", name: "scholar", widget: "string", required: false, i18n: duplicate }
+      - { label: "GitHub", name: "github", widget: "string", required: false, i18n: duplicate }
+      - { label: "Thứ tự hiển thị / Order", name: "weight", widget: "number", default: 10, value_type: "int", min: 0, i18n: duplicate }
+      - { label: "Ẩn / Draft", name: "draft", widget: "boolean", default: false, required: false, i18n: duplicate }
+      - { label: "Tiểu sử / Bio", name: "body", widget: "markdown", required: false, i18n: true }
+
+  # ---------- Bài báo ----------
+  - name: "publications"
+    label: "Bài báo / Publications"
+    label_singular: "Bài báo"
+    folder: "content/publications"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    summary: "{{year}} — {{title}}"
+    sortable_fields: ["year", "title"]
+    i18n: true
+    fields:
+      - { label: "Tiêu đề / Title", name: "title", widget: "string", i18n: true }
+      - { label: "Tác giả / Authors", name: "authors", widget: "string", i18n: duplicate }
+      - label: "Thành viên lab / Lab members"
+        name: "members"
+        widget: "relation"
+        collection: "members"
+        search_fields: ["title"]
+        value_field: "{{slug}}"
+        display_fields: ["title", "role"]
+        multiple: true
+        required: false
+        i18n: duplicate
+        hint: "Chọn thành viên trong lab tham gia. Dùng để link từ trang member."
+      - { label: "Năm / Year", name: "year", widget: "number", value_type: "int", min: 1900, max: 2100, i18n: duplicate }
+      - { label: "Hội nghị / Venue", name: "venue", widget: "string", required: false, i18n: duplicate }
+      - { label: "Loại / Type", name: "type", widget: "select", options: ["Journal", "Conference", "Workshop", "Preprint", "Book", "Thesis"], default: "Conference", required: false, i18n: duplicate }
+      - { label: "Liên kết PDF / DOI", name: "link", widget: "string", required: false, i18n: duplicate }
+      - { label: "Mã nguồn / Code link", name: "code", widget: "string", required: false, i18n: duplicate }
+      - { label: "Ảnh / Image", name: "image", widget: "image", required: false, i18n: duplicate }
+      - { label: "Nổi bật / Featured", name: "featured", widget: "boolean", default: false, required: false, i18n: duplicate }
+      - { label: "Tóm tắt / Abstract", name: "body", widget: "markdown", required: false, i18n: true }
+
+  # ---------- Dự án ----------
+  - name: "projects"
+    label: "Dự án / Projects"
+    label_singular: "Dự án"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: ["weight", "title", "date"]
+    i18n: true
+    fields:
+      - { label: "Tên dự án / Title", name: "title", widget: "string", i18n: true }
+      - { label: "Mô tả ngắn / Description", name: "description", widget: "text", i18n: true }
+      - label: "Thành viên lab / Lab members"
+        name: "members"
+        widget: "relation"
+        collection: "members"
+        search_fields: ["title"]
+        value_field: "{{slug}}"
+        display_fields: ["title", "role"]
+        multiple: true
+        required: false
+        i18n: duplicate
+        hint: "Chọn thành viên trong lab tham gia dự án này."
+      - { label: "Ảnh / Image", name: "image", widget: "image", i18n: duplicate }
+      - { label: "Trạng thái / Status", name: "status", widget: "string", required: false, i18n: true, hint: "Free text, vì có thể khác nhau giữa VI/EN" }
+      - { label: "Ngày bắt đầu / Date", name: "date", widget: "datetime", default: "", required: false, i18n: duplicate }
+      - { label: "Liên kết / Link", name: "link", widget: "string", required: false, i18n: duplicate }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        i18n: true
+      - { label: "Thứ tự / Order", name: "weight", widget: "number", default: 10, value_type: "int", min: 0, i18n: duplicate }
+      - { label: "Nội dung / Body", name: "body", widget: "markdown", required: false, i18n: true }
+
+  # ---------- Tin tức ----------
+  - name: "news"
+    label: "Tin tức / News"
+    label_singular: "Bản tin"
+    folder: "content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
+    sortable_fields: ["date", "title"]
+    i18n: true
+    fields:
+      - { label: "Tiêu đề / Title", name: "title", widget: "string", i18n: true }
+      - { label: "Ngày đăng / Date", name: "date", widget: "datetime", i18n: duplicate }
+      - { label: "Ảnh / Image", name: "image", widget: "image", required: false, i18n: duplicate }
+      - { label: "Tóm tắt / Summary", name: "summary", widget: "text", required: false, i18n: true }
+      - { label: "Liên kết ngoài / External link", name: "link", widget: "string", required: false, i18n: duplicate }
+      - { label: "Nội dung / Body", name: "body", widget: "markdown", required: false, i18n: true }
