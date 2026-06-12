@@ -2,7 +2,7 @@
 {{ $contact := index .Site.Data $lang "contact" }}
 {{ with $contact }}
 <section class="section" id="contact">
-  <div class="container contact-grid">
+  <div class="container contact-grid{{ if not .map_embed }} contact-grid--single{{ end }}">
     <div>
       <header class="section-head">
         <h2>{{ .heading | default "Contact" }}</h2>

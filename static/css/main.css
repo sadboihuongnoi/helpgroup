@@ -325,6 +325,9 @@ p { margin: 0 0 1rem; }
   align-items: start;
 }
 @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+/* Không có bản đồ → 1 cột căn giữa */
+.contact-grid--single { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; text-align: center; }
+.contact-grid--single .social-list { justify-content: center; }
 .contact-list { list-style: none; margin: 0 0 1.25rem; padding: 0; }
 .contact-list li { padding: .35rem 0; }
 .social-list {
