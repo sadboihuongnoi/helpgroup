@@ -583,7 +583,10 @@ p { margin: 0 0 1rem; }
 .prose h2, .prose h3 { margin-top: 2rem; }
 
 /* ---------- Research areas ---------- */
-.grid-research { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.grid-research { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) {
+  .grid-research { grid-template-columns: 1fr; }
+}
 
 .research-card {
   display: flex; flex-direction: column; align-items: flex-start; gap: .35rem;
