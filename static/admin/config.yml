@@ -157,7 +157,10 @@ collections:
         hint: "Chọn thành viên trong lab tham gia. Dùng để link từ trang member."
       - { label: "Năm / Year", name: "year", widget: "number", value_type: "int", min: 1900, max: 2100, i18n: duplicate }
       - { label: "Hội nghị / Venue", name: "venue", widget: "string", required: false, i18n: duplicate }
-      - { label: "Loại / Type", name: "type", widget: "select", options: ["Journal", "Conference", "Workshop", "Preprint", "Book", "Thesis"], default: "Conference", required: false, i18n: duplicate }
+      - { label: "Loại / Type", name: "type", widget: "select", options: ["Journal", "Conference", "Workshop", "Preprint", "Book", "Thesis"], default: "Journal", required: false, i18n: duplicate }
+      - { label: "ISSN - Danh mục / Indexing", name: "indexing", widget: "string", required: false, i18n: duplicate, hint: "VD: 1098-3015 (SCIE/SSCI/Scopus)" }
+      - { label: "Impact Factor", name: "impact_factor", widget: "string", required: false, i18n: duplicate }
+      - { label: "Xếp hạng / Quartile", name: "quartile", widget: "string", required: false, i18n: duplicate, hint: "VD: Q1, Q2/Q3" }
       - { label: "Liên kết PDF / DOI", name: "link", widget: "string", required: false, i18n: duplicate }
       - { label: "Mã nguồn / Code link", name: "code", widget: "string", required: false, i18n: duplicate }
       - { label: "Ảnh / Image", name: "image", widget: "image", required: false, i18n: duplicate }

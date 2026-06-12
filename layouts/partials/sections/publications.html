@@ -28,7 +28,8 @@
                 <span class="pub-authors">{{ .Params.authors }}</span>
                 {{ with .Params.year }}<span class="pub-venue">· {{ . }}</span>{{ end }}
                 {{ with .Params.venue }}<span class="pub-venue">· {{ . }}</span>{{ end }}
-                {{ with .Params.type }}<span class="pub-type">· {{ . }}</span>{{ end }}
+                {{ with .Params.impact_factor }}<span class="pub-type">· IF {{ . }}</span>{{ end }}
+                {{ with .Params.quartile }}<span class="pub-type">· {{ . }}</span>{{ end }}
               </p>
               <p class="pub-actions">
                 <a href="{{ .RelPermalink }}">{{ i18n "ui_view_details" }}</a>

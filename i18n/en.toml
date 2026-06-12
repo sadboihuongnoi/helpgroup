@@ -88,6 +88,10 @@ other = "Year"
 other = "Status"
 [ui_tags]
 other = "Tags"
+[ui_indexing]
+other = "Indexed in"
+[ui_quartile]
+other = "Quartile"
 [ui_external_link]
 other = "External link"
 

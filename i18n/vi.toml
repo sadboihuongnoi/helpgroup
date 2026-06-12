@@ -88,6 +88,10 @@ other = "Năm"
 other = "Trạng thái"
 [ui_tags]
 other = "Tags"
+[ui_indexing]
+other = "Danh mục"
+[ui_quartile]
+other = "Xếp hạng"
 [ui_external_link]
 other = "Liên kết ngoài"
 

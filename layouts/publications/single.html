@@ -8,6 +8,9 @@
         <strong>{{ i18n "ui_authors" }}:</strong> {{ .Params.authors }}<br />
         {{ with .Params.venue }}<strong>{{ i18n "ui_venue" }}:</strong> {{ . }}<br />{{ end }}
         <strong>{{ i18n "ui_year" }}:</strong> {{ .Params.year }}
+        {{ with .Params.indexing }}<br /><strong>{{ i18n "ui_indexing" }}:</strong> {{ . }}{{ end }}
+        {{ with .Params.impact_factor }}<br /><strong>Impact Factor:</strong> {{ . }}{{ end }}
+        {{ with .Params.quartile }}<br /><strong>{{ i18n "ui_quartile" }}:</strong> {{ . }}{{ end }}
       </p>
       <p class="pub-detail-actions">
         {{ with .Params.link }}<a class="btn btn-primary" href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_pdf" }}</a>{{ end }}
