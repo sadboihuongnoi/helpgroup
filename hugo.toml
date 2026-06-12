@@ -41,10 +41,6 @@ enableRobotsTXT = true
       url = "/#projects"
       weight = 4
     [[languages.vi.menus.main]]
-      name = "Tin tức"
-      url = "/#news"
-      weight = 5
-    [[languages.vi.menus.main]]
       name = "Liên hệ"
       url = "/#contact"
       weight = 6
@@ -72,10 +68,6 @@ enableRobotsTXT = true
       name = "Projects"
       url = "/en/#projects"
       weight = 4
-    [[languages.en.menus.main]]
-      name = "News"
-      url = "/en/#news"
-      weight = 5
     [[languages.en.menus.main]]
       name = "Contact"
       url = "/en/#contact"
