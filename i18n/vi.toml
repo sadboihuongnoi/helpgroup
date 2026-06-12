@@ -11,6 +11,8 @@ other = "Chưa có thành viên nào. Hãy thêm tại"
 other = "Bài báo"
 [publications_subtitle]
 other = "Các công trình đã công bố và sắp xuất bản."
+[publications_featured_subtitle]
+other = "Một số công bố tiêu biểu của nhóm."
 [publications_empty]
 other = "Chưa có bài báo nào."
 [publications_pdf]

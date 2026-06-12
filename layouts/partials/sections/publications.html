@@ -1,49 +1,44 @@
 {{ $pubs := where site.RegularPages "Section" "publications" }}
 {{ $placeholder := "/images/uploads/pub-placeholder.svg" }}
 
+{{/* Ưu tiên bài đánh dấu featured; chưa có thì lấy bài mới nhất */}}
+{{ $highlights := where $pubs "Params.featured" true }}
+{{ if not $highlights }}{{ $highlights = $pubs }}{{ end }}
+{{ $highlights = first 4 (sort $highlights "Params.year" "desc") }}
+
 <section class="section section-alt" id="publications">
   <div class="container">
     <header class="section-head">
       <h2>{{ i18n "publications_heading" }}</h2>
-      <p class="muted">{{ i18n "publications_subtitle" }}</p>
+      <p class="muted">{{ i18n "publications_featured_subtitle" }}</p>
     </header>
 
-    {{ if $pubs }}
-      {{ $years := slice }}
-      {{ range $pubs }}
-        {{ $years = $years | append .Params.year }}
-      {{ end }}
-      {{ $years = uniq $years | sort | collections.Reverse }}
-
-      {{ range $year := $years }}
-        <div class="pub-year-group" data-year="{{ $year }}">
-          <h3 class="pub-year">{{ $year }}</h3>
-          <ol class="pub-list">
-            {{ range where $pubs "Params.year" $year }}
-              <li class="pub-item {{ if .Params.featured }}is-featured{{ end }}">
-                <a class="pub-thumb" href="{{ .RelPermalink }}">
-                  <img src="{{ (.Params.image | default $placeholder) | relURL }}" alt="{{ .Title }}" loading="lazy" />
-                </a>
-                <div class="pub-content">
-                  <p class="pub-title">
-                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                  </p>
-                  <p class="pub-meta">
-                    <span class="pub-authors">{{ .Params.authors }}</span>
-                    {{ with .Params.venue }}<span class="pub-venue">· {{ . }}</span>{{ end }}
-                    {{ with .Params.type }}<span class="pub-type">· {{ . }}</span>{{ end }}
-                  </p>
-                  <p class="pub-actions">
-                    <a href="{{ .RelPermalink }}">{{ i18n "ui_view_details" }}</a>
-                    {{ with .Params.link }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_pdf" }}</a>{{ end }}
-                    {{ with .Params.code }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_code" }}</a>{{ end }}
-                  </p>
-                </div>
-              </li>
-            {{ end }}
-          </ol>
-        </div>
-      {{ end }}
+    {{ if $highlights }}
+      <ol class="pub-list">
+        {{ range $highlights }}
+          <li class="pub-item is-featured">
+            <a class="pub-thumb" href="{{ .RelPermalink }}">
+              <img src="{{ (.Params.image | default $placeholder) | relURL }}" alt="{{ .Title }}" loading="lazy" />
+            </a>
+            <div class="pub-content">
+              <p class="pub-title">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+              </p>
+              <p class="pub-meta">
+                <span class="pub-authors">{{ .Params.authors }}</span>
+                {{ with .Params.year }}<span class="pub-venue">· {{ . }}</span>{{ end }}
+                {{ with .Params.venue }}<span class="pub-venue">· {{ . }}</span>{{ end }}
+                {{ with .Params.type }}<span class="pub-type">· {{ . }}</span>{{ end }}
+              </p>
+              <p class="pub-actions">
+                <a href="{{ .RelPermalink }}">{{ i18n "ui_view_details" }}</a>
+                {{ with .Params.link }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_pdf" }}</a>{{ end }}
+                {{ with .Params.code }}<a href="{{ . }}" target="_blank" rel="noopener">{{ i18n "publications_code" }}</a>{{ end }}
+              </p>
+            </div>
+          </li>
+        {{ end }}
+      </ol>
 
       <p class="section-cta">
         <a class="link-arrow" href="{{ "publications/" | relLangURL }}">{{ i18n "ui_view_all" }}</a>

@@ -11,6 +11,8 @@ other = "No members yet. Add them at"
 other = "Publications"
 [publications_subtitle]
 other = "Published and upcoming research papers."
+[publications_featured_subtitle]
+other = "Selected highlights from our group."
 [publications_empty]
 other = "No publications yet."
 [publications_pdf]
