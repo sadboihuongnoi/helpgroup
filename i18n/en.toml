@@ -80,6 +80,9 @@ other = "Tags"
 [ui_external_link]
 other = "External link"
 
+[ui_close]
+other = "Close"
+
 [ui_open_menu]
 other = "Open menu"
 [ui_main_nav]

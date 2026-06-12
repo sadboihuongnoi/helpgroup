@@ -362,6 +362,7 @@ p { margin: 0 0 1rem; }
   border-bottom: 1px solid var(--c-fg);
   margin-bottom: 2.75rem;
 }
+.about-head--solo { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
 .about-title {
   font-family: Georgia, "Times New Roman", "Playfair Display", serif;
   font-weight: 700;
@@ -384,6 +385,10 @@ p { margin: 0 0 1rem; }
   font-size: 1rem; color: var(--c-stat); font-weight: 600; margin: 0;
 }
 
+.stats-section .container {
+  padding-top: 2.75rem;
+  border-top: 1px solid var(--c-fg);
+}
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -571,3 +576,42 @@ p { margin: 0 0 1rem; }
 .simple-list li { padding: .6rem 0; border-bottom: 1px solid var(--c-border); }
 .prose img { border-radius: var(--radius); margin: 1.5rem 0; }
 .prose h2, .prose h3 { margin-top: 2rem; }
+
+/* ---------- Research areas ---------- */
+.grid-research { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+
+.research-card {
+  display: flex; flex-direction: column; align-items: flex-start; gap: .35rem;
+  text-align: left;
+  font: inherit; color: var(--c-fg); cursor: pointer;
+  background: var(--c-bg);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.research-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.research-card h3 { margin: 0; font-size: 1.05rem; }
+.research-sub { margin: 0; color: var(--c-primary); font-size: .85rem; font-weight: 600; }
+.research-summary { margin: .25rem 0 0; color: var(--c-muted); font-size: .92rem; }
+.research-more { margin-top: auto; padding-top: .75rem; color: var(--c-primary); font-size: .9rem; font-weight: 500; }
+
+.research-modal {
+  border: none; padding: 0; margin: auto;
+  width: min(560px, calc(100vw - 2.5rem));
+  background: var(--c-bg); color: var(--c-fg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.research-modal::backdrop { background: rgba(15, 23, 42, .55); }
+.research-modal-inner { padding: 2rem; position: relative; }
+.research-modal-inner h3 { margin: 0 0 .25rem; padding-right: 2rem; }
+.research-modal-inner .prose { margin-top: 1rem; }
+.research-modal-close {
+  position: absolute; top: .9rem; right: .9rem;
+  width: 2rem; height: 2rem; line-height: 1;
+  font-size: 1.3rem; cursor: pointer;
+  color: var(--c-muted);
+  background: transparent; border: 1px solid var(--c-border); border-radius: 8px;
+}
+.research-modal-close:hover { color: var(--c-fg); }

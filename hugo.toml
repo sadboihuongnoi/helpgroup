@@ -25,8 +25,8 @@ enableRobotsTXT = true
     [languages.vi.params]
       description = "Trang web giới thiệu nhóm nghiên cứu"
     [[languages.vi.menus.main]]
-      name = "Trang chủ"
-      url = "/#hero"
+      name = "Lĩnh vực nghiên cứu"
+      url = "/#research"
       weight = 1
     [[languages.vi.menus.main]]
       name = "Thành viên"
@@ -57,8 +57,8 @@ enableRobotsTXT = true
     [languages.en.params]
       description = "Research lab website"
     [[languages.en.menus.main]]
-      name = "Home"
-      url = "/en/#hero"
+      name = "Research"
+      url = "/en/#research"
       weight = 1
     [[languages.en.menus.main]]
       name = "Members"

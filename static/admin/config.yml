@@ -68,6 +68,27 @@ collections:
         name: "stats_en"
         fields: *stats_fields
 
+      - file: "data/vi/research.yml"
+        label: "Lĩnh vực nghiên cứu (VI)"
+        name: "research_vi"
+        fields: &research_fields
+          - { label: "Tiêu đề mục", name: "heading", widget: "string" }
+          - { label: "Mô tả", name: "subtitle", widget: "text", required: false }
+          - label: "Các lĩnh vực"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Tên lĩnh vực", name: "title", widget: "string" }
+              - { label: "Tên tiếng Anh / chú thích", name: "subtitle", widget: "string", required: false }
+              - { label: "Tóm tắt (hiện trên thẻ)", name: "summary", widget: "text" }
+              - { label: "Nội dung đầy đủ (hiện khi click)", name: "details", widget: "markdown" }
+
+      - file: "data/en/research.yml"
+        label: "Research areas (EN)"
+        name: "research_en"
+        fields: *research_fields
+
       - file: "data/vi/contact.yml"
         label: "Thông tin liên hệ (VI)"
         name: "contact_vi"
