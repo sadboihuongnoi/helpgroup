@@ -30,7 +30,7 @@ enableRobotsTXT = true
       weight = 1
     [[languages.vi.menus.main]]
       name = "Thành viên"
-      url = "/#members"
+      url = "/members/"
       weight = 2
     [[languages.vi.menus.main]]
       name = "Bài báo"
@@ -62,7 +62,7 @@ enableRobotsTXT = true
       weight = 1
     [[languages.en.menus.main]]
       name = "Members"
-      url = "/en/#members"
+      url = "/en/members/"
       weight = 2
     [[languages.en.menus.main]]
       name = "Publications"
