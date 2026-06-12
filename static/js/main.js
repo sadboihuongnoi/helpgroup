@@ -19,22 +19,6 @@
 
   // Publications year filter: xử lý ở inline script trong publications/list.html
 
-  // ----- Research area modals -----
-  document.querySelectorAll('[data-research-open]').forEach(function (btn) {
-    var modal = document.getElementById(btn.getAttribute('data-research-open'));
-    if (!modal || typeof modal.showModal !== 'function') return;
-    btn.addEventListener('click', function () {
-      modal.showModal();
-    });
-    modal.querySelector('[data-research-close]').addEventListener('click', function () {
-      modal.close();
-    });
-    // Click vào backdrop (ngoài phần nội dung) thì đóng
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal) modal.close();
-    });
-  });
-
   // ----- Counter animation -----
   var counters = document.querySelectorAll('.stat-value[data-counter]');
   if (counters.length && 'IntersectionObserver' in window) {

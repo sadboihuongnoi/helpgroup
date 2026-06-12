@@ -596,23 +596,3 @@ p { margin: 0 0 1rem; }
 .research-sub { margin: 0; color: var(--c-primary); font-size: .85rem; font-weight: 600; }
 .research-summary { margin: .25rem 0 0; color: var(--c-muted); font-size: .92rem; }
 .research-more { margin-top: auto; padding-top: .75rem; color: var(--c-primary); font-size: .9rem; font-weight: 500; }
-
-.research-modal {
-  border: none; padding: 0; margin: auto;
-  width: min(560px, calc(100vw - 2.5rem));
-  background: var(--c-bg); color: var(--c-fg);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-md);
-}
-.research-modal::backdrop { background: rgba(15, 23, 42, .55); }
-.research-modal-inner { padding: 2rem; position: relative; }
-.research-modal-inner h3 { margin: 0 0 .25rem; padding-right: 2rem; }
-.research-modal-inner .prose { margin-top: 1rem; }
-.research-modal-close {
-  position: absolute; top: .9rem; right: .9rem;
-  width: 2rem; height: 2rem; line-height: 1;
-  font-size: 1.3rem; cursor: pointer;
-  color: var(--c-muted);
-  background: transparent; border: 1px solid var(--c-border); border-radius: 8px;
-}
-.research-modal-close:hover { color: var(--c-fg); }

@@ -89,9 +89,6 @@ other = "Tags"
 [ui_external_link]
 other = "Liên kết ngoài"
 
-[ui_close]
-other = "Đóng"
-
 [ui_open_menu]
 other = "Mở menu"
 [ui_main_nav]
