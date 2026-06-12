@@ -18,6 +18,13 @@ other = "PDF / DOI"
 [publications_code]
 other = "Code"
 
+[research_heading]
+other = "Research Areas"
+[research_subtitle]
+other = "Our group's core research directions."
+[research_empty]
+other = "No research areas yet."
+
 [projects_heading]
 other = "Projects"
 [projects_subtitle]
@@ -62,6 +69,8 @@ other = "← Back to Publications"
 other = "← Back to Projects"
 [ui_back_news]
 other = "← Back to News"
+[ui_back_research]
+other = "← Back to Research Areas"
 [member_pubs_heading]
 other = "Publications"
 [member_projects_heading]

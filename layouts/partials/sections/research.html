@@ -1,34 +1,32 @@
-{{ $lang := .Site.Language.Lang }}
-{{ $research := index .Site.Data $lang "research" }}
-{{ with $research }}
+{{ $areas := (where .Site.RegularPages "Section" "research").ByWeight }}
+{{ if $areas }}
 <section class="section section-alt" id="research">
   <div class="container">
     <header class="section-head">
-      <h2>{{ .heading }}</h2>
-      {{ with .subtitle }}<p class="muted">{{ . }}</p>{{ end }}
+      <h2>{{ i18n "research_heading" }}</h2>
+      <p class="muted">{{ i18n "research_subtitle" }}</p>
     </header>
 
-    {{ with .items }}
-      <div class="grid grid-research">
-        {{ range $i, $item := . }}
-          <button class="research-card" type="button" data-research-open="research-modal-{{ $i }}">
-            <h3>{{ $item.title }}</h3>
-            {{ with $item.subtitle }}<p class="research-sub">{{ . }}</p>{{ end }}
-            <p class="research-summary">{{ $item.summary }}</p>
-            <span class="research-more">{{ i18n "ui_view_details" }}</span>
-          </button>
+    <div class="grid grid-research">
+      {{ range $i, $p := $areas }}
+        <button class="research-card" type="button" data-research-open="research-modal-{{ $i }}">
+          <h3>{{ $p.Title }}</h3>
+          {{ with $p.Params.subtitle }}<p class="research-sub">{{ . }}</p>{{ end }}
+          <p class="research-summary">{{ $p.Params.summary }}</p>
+          <span class="research-more">{{ i18n "ui_view_details" }}</span>
+        </button>
 
-          <dialog class="research-modal" id="research-modal-{{ $i }}" aria-labelledby="research-modal-title-{{ $i }}">
-            <div class="research-modal-inner">
-              <button class="research-modal-close" type="button" data-research-close aria-label="{{ i18n "ui_close" }}">&times;</button>
-              <h3 id="research-modal-title-{{ $i }}">{{ $item.title }}</h3>
-              {{ with $item.subtitle }}<p class="research-sub">{{ . }}</p>{{ end }}
-              <div class="prose">{{ $item.details | markdownify }}</div>
-            </div>
-          </dialog>
-        {{ end }}
-      </div>
-    {{ end }}
+        <dialog class="research-modal" id="research-modal-{{ $i }}" aria-labelledby="research-modal-title-{{ $i }}">
+          <div class="research-modal-inner">
+            <button class="research-modal-close" type="button" data-research-close aria-label="{{ i18n "ui_close" }}">&times;</button>
+            <h3 id="research-modal-title-{{ $i }}"><a href="{{ $p.RelPermalink }}">{{ $p.Title }}</a></h3>
+            {{ with $p.Params.subtitle }}<p class="research-sub">{{ . }}</p>{{ end }}
+            <div class="prose">{{ $p.Content }}</div>
+            <p><a class="link-arrow" href="{{ $p.RelPermalink }}">{{ i18n "ui_view_details" }}</a></p>
+          </div>
+        </dialog>
+      {{ end }}
+    </div>
   </div>
 </section>
 {{ end }}

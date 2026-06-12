@@ -1,7 +1,7 @@
 baseURL = "https://helpgroup.netlify.app/"
 defaultContentLanguage = "vi"
 defaultContentLanguageInSubdir = false
-title = "Research Lab"
+title = "HELP Group"
 enableRobotsTXT = true
 
 [markup]
@@ -20,10 +20,10 @@ enableRobotsTXT = true
   [languages.vi]
     languageCode = "vi"
     languageName = "Tiếng Việt"
-    title = "Research Lab"
+    title = "HELP Group"
     weight = 1
     [languages.vi.params]
-      description = "Trang web giới thiệu nhóm nghiên cứu"
+      description = "Nhóm Nghiên cứu kết nối bằng chứng và chính sách y tế (HELP Group)"
     [[languages.vi.menus.main]]
       name = "Lĩnh vực nghiên cứu"
       url = "/#research"
@@ -52,10 +52,10 @@ enableRobotsTXT = true
   [languages.en]
     languageCode = "en"
     languageName = "English"
-    title = "Research Lab"
+    title = "HELP Group"
     weight = 2
     [languages.en.params]
-      description = "Research lab website"
+      description = "Health Evidence Linkage to Policy Research Group (HELP Group)"
     [[languages.en.menus.main]]
       name = "Research"
       url = "/en/#research"

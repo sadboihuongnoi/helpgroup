@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="section">
+  <div class="container narrow">
+    <header class="section-head" style="text-align:left;">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.subtitle }}<p class="research-sub">{{ . }}</p>{{ end }}
+    </header>
+
+    {{ with .Content }}<div class="prose">{{ . }}</div>{{ end }}
+
+    <p><a class="link-arrow" href="{{ "research/" | relLangURL }}">{{ i18n "ui_back_research" }}</a></p>
+  </div>
+</article>
+{{ end }}

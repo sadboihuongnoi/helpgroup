@@ -18,6 +18,13 @@ other = "PDF / DOI"
 [publications_code]
 other = "Code"
 
+[research_heading]
+other = "Lĩnh vực nghiên cứu"
+[research_subtitle]
+other = "Các hướng nghiên cứu trọng tâm của nhóm."
+[research_empty]
+other = "Chưa có lĩnh vực nghiên cứu nào."
+
 [projects_heading]
 other = "Dự án"
 [projects_subtitle]
@@ -62,6 +69,8 @@ other = "← Quay lại trang Bài báo"
 other = "← Quay lại trang Dự án"
 [ui_back_news]
 other = "← Quay lại trang Tin tức"
+[ui_back_research]
+other = "← Quay lại trang Lĩnh vực nghiên cứu"
 [member_pubs_heading]
 other = "Bài báo"
 [member_projects_heading]
