@@ -1,17 +1,17 @@
-heading: "Nhóm Nghiên cứu kết nối bằng chứng và chính sách y tế (HELP Group)"
-description: "Với định hướng chiến lược “Nghiên cứu để hỗ trợ chính sách”, HELP Group được thành lập nhằm cung cấp các bằng chứng từ dữ liệu đời thực (Real-world evidence) và giải pháp khoa học cho các vấn đề cấp thiết của ngành y tế. Mục tiêu của nhóm là xây dựng một hệ sinh thái nghiên cứu năng động, nơi các kết quả đánh giá công nghệ y tế (HTA) và các tổng hợp bằng chứng được chuyển tải thành các khuyến nghị chính sách khả thi, góp phần cải thiện tiếp cận thuốc/can thiệp y tế và công bằng trong chăm sóc sức khỏe cộng đồng."
-logo: "/images/uploads/lab-logo.svg"
-logo_caption: "HELP Group"
+heading: Nhóm Nghiên cứu kết nối bằng chứng và chính sách y tế (HELP Group)
+description: Với định hướng chiến lược “Nghiên cứu để hỗ trợ chính sách”, HELP Group được thành lập nhằm cung cấp các bằng chứng từ dữ liệu đời thực (Real-world evidence) và giải pháp khoa học cho các vấn đề cấp thiết của ngành y tế. Mục tiêu của nhóm là xây dựng một hệ sinh thái nghiên cứu năng động, nơi các kết quả đánh giá công nghệ y tế (HTA) và các tổng hợp bằng chứng được chuyển tải thành các khuyến nghị chính sách khả thi, góp phần cải thiện tiếp cận thuốc/can thiệp y tế và công bằng trong chăm sóc sức khỏe cộng đồng.
+logo: /images/uploads/lab-logo.svg
+logo_caption: HELP Group
 items:
-  - value: "2022"
-    label: "Năm thành lập lab"
-  - value: "80+"
-    label: "Bài báo từ thành viên & cộng tác viên"
-  - value: "9+"
-    label: "Đối tác giáo dục & công nghệ"
-  - value: "50+"
-    label: "Thành viên và cộng tác viên"
-  - value: "100+"
-    label: "Dự án đã & đang triển khai"
-  - value: "34+"
-    label: "Tháng phát triển"
+  - value: '2026'
+    label: Năm thành lập lab
+  - value: 80+
+    label: Bài báo từ thành viên & cộng tác viên
+  - value: 9+
+    label: Đối tác giáo dục & công nghệ
+  - value: 50+
+    label: Thành viên và cộng tác viên
+  - value: 100+
+    label: Dự án đã & đang triển khai
+  - value: 34+
+    label: Tháng phát triển
