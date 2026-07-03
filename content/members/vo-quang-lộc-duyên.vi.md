@@ -6,6 +6,6 @@ email: vplduyen@ctu.edu.vn
 homepage: ''
 scholar: ''
 github: ''
-weight: 10
+weight: 5
 draft: false
 ---
